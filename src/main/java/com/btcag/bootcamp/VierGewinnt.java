@@ -20,14 +20,23 @@ public class VierGewinnt {
 
             } else {
 
-                System.out.println("Spieler 1: \n");
-                System.out.println(spielereins);
-                System.out.println("Spieler 2: \n");
-                System.out.println(spielerzwei);
+                System.out.println("Spieler 1:");
+                System.out.println(spielereins + "\n");
+                System.out.println("Spieler 2:");
+                System.out.println(spielerzwei + "\n");
 
             }
         } while ((spielereins.length() < 3 || spielereins.length() > 15) && (spielerzwei.length() < 3 || spielerzwei.length() > 15));
 
+        int zeilen = 6;
+        int spalten = 7;
 
+        for (int Y = 0; Y < zeilen; Y++) {
+
+            for (int X = 0; X < spalten; X++) {
+                System.out.print("[ ] ");
+            }
+            System.out.println();
+        }
     }
 }
