@@ -14,5 +14,4 @@ public class ImmerPositiv {
 
         System.out.println(zahl);
     }
-
 }
