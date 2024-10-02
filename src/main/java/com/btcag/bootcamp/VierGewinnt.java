@@ -79,6 +79,17 @@ public class VierGewinnt {
                 }
             }
 
+            // Prüfen auf Sieg oder Unentschieden
+            if (sieg(feld, aktuellerSpieler)) {
+                Spielfeld(feld);
+                System.out.println(aktuellerSpielerName + " (" + aktuellerSpieler + ") hat gewonnen!");
+                spielLaeuft = false;
+            } else if (unentschieden(feld)){
+                Spielfeld(feld);
+                System.out.println("Das Spiel endet unentschieden!");
+                spielLaeuft = false;
+            }
+
             spielzug1 = !spielzug1; // Wechsel des Spielers
         }
     }
@@ -94,7 +105,52 @@ public class VierGewinnt {
         System.out.println();
     }
 
+    // Siegesprüfung
+    public static boolean sieg(char[][] feld, char spieler) {
+        for (int Y = 0; Y < zeilen; Y++) {
+            for (int X = 0; X < spalten - 3; X++) {
+                if (feld[Y][X] == spieler && feld[Y][X + 1] == spieler && feld[Y][X + 2] == spieler && feld[Y][X + 3] == spieler) {
+                    return true;
+                }
+            }
+        }
 
+        for (int Y = 0; Y < zeilen - 3; Y++) {
+            for (int X = 0; X < spalten; X++) {
+                if (feld[Y][X] == spieler && feld[Y + 1][X] == spieler && feld[Y + 2][X] == spieler && feld[Y + 3][X] == spieler) {
+                    return true;
+                }
+            }
+        }
+
+        for (int Y = 0; Y < zeilen - 3; Y++) {
+            for (int X = 0; X < spalten - 3; X++) {
+                if (feld[Y][X] == spieler && feld[Y + 1][X + 1] == spieler && feld[Y + 2][X + 2] == spieler && feld[Y + 3][X + 3] == spieler) {
+                    return true;
+                }
+            }
+        }
+
+        for (int Y = 0; Y < zeilen - 3; Y++) {
+            for (int X = 3; X < spalten; X++) {
+                if (feld[Y][X] == spieler && feld[Y + 1][X - 1] == spieler && feld[Y + 2][X - 2] == spieler && feld[Y + 3][X - 3] == spieler) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    // Es wird nach Unentschieden geprüft
+    public static boolean unentschieden(char[][] feld) {
+        for (int Y = 0; Y < zeilen; Y++) {
+            if (feld[0][Y] == leer) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
 
 
