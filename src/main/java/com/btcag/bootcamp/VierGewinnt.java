@@ -144,8 +144,8 @@ public class VierGewinnt {
 
     // Es wird nach Unentschieden geprüft
     public static boolean unentschieden(char[][] feld) {
-        for (int Y = 0; Y < zeilen; Y++) {
-            if (feld[0][Y] == leer) {
+        for (int X = 0; X < zeilen; X++) {
+            if (feld[0][X] == leer) {
                 return false;
             }
         }
